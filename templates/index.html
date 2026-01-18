@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metronome Online - Free Precision Metronome for Musicians</title>
-    <meta name="description" content="Free online metronome with precise timing, tap tempo, multiple time signatures, and subdivision options. Perfect for musicians, music students, and practice sessions.">
-    <meta name="keywords" content="metronome, online metronome, free metronome, tap tempo, time signature, music practice, rhythm training, BPM">
+    <meta name="description" content="Free online metronome with tempo trainer, practice timer, setlist management, and fullscreen mode. Professional features for musicians, students, and drummers. No download required.">
+    <meta name="keywords" content="metronome, online metronome, free metronome, tap tempo, time signature, music practice, rhythm training, BPM, tempo trainer, practice timer">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,20 +16,23 @@
         <header class="page-header">
             <div class="header-content">
                 <h1>Metronome Online</h1>
-                <p class="tagline">Precision timing for musicians and practice sessions</p>
+                <p class="tagline">Professional practice tools for musicians - free, no download required</p>
             </div>
             <div class="header-badges">
                 <span class="header-badge"><i class="ri-music-2-line"></i> Practice</span>
                 <span class="header-badge"><i class="ri-timer-line"></i> Precise</span>
                 <span class="header-badge"><i class="ri-hand-coin-line"></i> Free</span>
+                <span class="header-badge"><i class="ri-fullscreen-line"></i> Fullscreen</span>
             </div>
         </header>
 
         <nav class="mini-nav">
             <a href="#metronome" class="nav-link"><i class="ri-play-circle-line"></i> Metronome</a>
-            <a href="#settings" class="nav-link"><i class="ri-settings-4-line"></i> Settings</a>
+            <a href="#practice-tools" class="nav-link"><i class="ri-tools-line"></i> Practice Tools</a>
+            <a href="#setlist" class="nav-link"><i class="ri-file-list-3-line"></i> Setlist</a>
             <a href="#about-tempo" class="nav-link"><i class="ri-book-open-line"></i> Tempo Guide</a>
             <a href="#about-rhythm" class="nav-link"><i class="ri-rhythm-line"></i> Rhythm</a>
+            <a href="#practice-tips" class="nav-link"><i class="ri-lightbulb-line"></i> Practice Tips</a>
         </nav>
 
         <div class="main-controls" id="metronome">
@@ -104,7 +107,7 @@
 
             <!-- Status -->
             <div class="status-badge ready" id="statusBadge">
-                <span class="status-icon">●</span>
+                <span class="status-icon">&#9679;</span>
                 <span class="status-text">Ready</span>
             </div>
 
@@ -118,6 +121,145 @@
                     <i class="ri-hand-coin-line"></i>
                     <span>Tap Tempo</span>
                 </button>
+                <button id="fullscreenBtn" class="secondary-btn fullscreen-btn">
+                    <i class="ri-fullscreen-line"></i>
+                    <span>Fullscreen</span>
+                </button>
+            </div>
+
+            <!-- Keyboard Shortcuts Hint -->
+            <div class="shortcuts-hint">
+                <span><kbd>Space</kbd> Play/Stop</span>
+                <span><kbd>&#8593;</kbd><kbd>&#8595;</kbd> BPM</span>
+                <span><kbd>T</kbd> Tap</span>
+                <span><kbd>F</kbd> Fullscreen</span>
+                <span><kbd>1-9</kbd> Load Song</span>
+            </div>
+        </div>
+
+        <!-- Practice Tools Section -->
+        <div class="practice-tools-section" id="practice-tools">
+            <h2 class="section-title"><i class="ri-tools-line"></i> Practice Tools</h2>
+
+            <div class="practice-tools-grid">
+                <!-- Tempo Trainer -->
+                <div class="practice-tool-card">
+                    <div class="tool-header">
+                        <h3><i class="ri-speed-up-line"></i> Tempo Trainer</h3>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="tempoTrainerToggle">
+                            <span class="toggle-slider-sm"></span>
+                        </label>
+                    </div>
+                    <p class="tool-description">Gradually increase BPM over time to build speed safely.</p>
+                    <div class="tool-panel" id="tempoTrainerPanel">
+                        <div class="tool-row">
+                            <label>Start BPM</label>
+                            <input type="number" id="trainerStartBPM" value="80" min="20" max="280">
+                        </div>
+                        <div class="tool-row">
+                            <label>Target BPM</label>
+                            <input type="number" id="trainerTargetBPM" value="120" min="30" max="300">
+                        </div>
+                        <div class="tool-row">
+                            <label>Duration (minutes)</label>
+                            <input type="number" id="trainerDuration" value="5" min="1" max="60">
+                        </div>
+                        <div class="trainer-progress" id="trainerProgress">
+                            <div class="trainer-progress-fill" id="trainerProgressFill"></div>
+                        </div>
+                        <div class="trainer-current" id="trainerCurrentBPM">Current: 80 BPM</div>
+                    </div>
+                </div>
+
+                <!-- Practice Timer -->
+                <div class="practice-tool-card">
+                    <div class="tool-header">
+                        <h3><i class="ri-timer-2-line"></i> Practice Timer</h3>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="practiceTimerToggle">
+                            <span class="toggle-slider-sm"></span>
+                        </label>
+                    </div>
+                    <p class="tool-description">Track your practice time with countdown or stopwatch mode.</p>
+                    <div class="tool-panel" id="practiceTimerPanel">
+                        <div class="tool-row">
+                            <label>Mode</label>
+                            <select id="timerModeSelect">
+                                <option value="countdown">Countdown</option>
+                                <option value="stopwatch">Stopwatch</option>
+                            </select>
+                        </div>
+                        <div class="tool-row" id="timerDurationRow">
+                            <label>Duration (minutes)</label>
+                            <input type="number" id="timerDuration" value="15" min="1" max="120">
+                        </div>
+                        <div class="timer-display-large" id="timerDisplay">15:00</div>
+                        <button class="tool-btn" id="timerReset"><i class="ri-restart-line"></i> Reset Timer</button>
+                    </div>
+                </div>
+
+                <!-- Muted Beats Training -->
+                <div class="practice-tool-card">
+                    <div class="tool-header">
+                        <h3><i class="ri-volume-mute-line"></i> Muted Beats</h3>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="mutedBeatsToggle">
+                            <span class="toggle-slider-sm"></span>
+                        </label>
+                    </div>
+                    <p class="tool-description">Develop internal timing by periodically silencing the click.</p>
+                    <div class="tool-panel" id="mutedBeatsPanel">
+                        <div class="tool-row">
+                            <label>Play for (bars)</label>
+                            <input type="number" id="mutedPlayBars" value="4" min="1" max="16">
+                        </div>
+                        <div class="tool-row">
+                            <label>Silent for (bars)</label>
+                            <input type="number" id="mutedSilentBars" value="2" min="1" max="16">
+                        </div>
+                        <div class="muted-beats-status" id="mutedBeatsStatus">Ready</div>
+                    </div>
+                </div>
+
+                <!-- Practice Stats -->
+                <div class="practice-tool-card stats-card">
+                    <div class="tool-header">
+                        <h3><i class="ri-bar-chart-line"></i> Practice Stats</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value" id="totalPracticeDisplay">0m</span>
+                            <span class="stat-label">Total Practice</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="sessionsTodayDisplay">0</span>
+                            <span class="stat-label">Sessions Today</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setlist Section -->
+        <div class="setlist-section" id="setlist">
+            <h2 class="section-title"><i class="ri-file-list-3-line"></i> Setlist</h2>
+            <p class="section-description">Save your songs with tempo and time signature for quick recall. Press 1-9 to load songs instantly.</p>
+
+            <div class="setlist-add">
+                <input type="text" id="songNameInput" placeholder="Song name (optional)" class="song-name-input">
+                <button id="saveToSetlistBtn" class="tool-btn primary"><i class="ri-add-line"></i> Save Current Settings</button>
+            </div>
+
+            <div class="setlist-items" id="setlistItems">
+                <div class="setlist-empty">No songs saved. Add your first song above.</div>
+            </div>
+
+            <div class="setlist-actions">
+                <button id="exportSetlistBtn" class="tool-btn"><i class="ri-download-line"></i> Export</button>
+                <button id="importSetlistBtn" class="tool-btn"><i class="ri-upload-line"></i> Import</button>
+                <button id="clearSetlistBtn" class="tool-btn danger"><i class="ri-delete-bin-line"></i> Clear All</button>
+                <input type="file" id="importSetlistFile" accept=".json" style="display: none;">
             </div>
         </div>
 
@@ -233,6 +375,85 @@
                     <li><strong>140-160 BPM:</strong> Drum and bass, faster electronic genres</li>
                     <li><strong>170-180 BPM:</strong> Fast punk rock, speed metal</li>
                 </ul>
+
+                <h3>Famous Songs by BPM</h3>
+                <div class="info-grid">
+                    <div class="info-card algorithm-card">
+                        <h4>60-80 BPM - Slow & Emotional</h4>
+                        <ul class="song-list">
+                            <li>"Nothing Else Matters" - Metallica (46 BPM)</li>
+                            <li>"Hotel California" - Eagles (75 BPM)</li>
+                            <li>"Zombie" - The Cranberries (84 BPM)</li>
+                        </ul>
+                    </div>
+                    <div class="info-card algorithm-card">
+                        <h4>100-120 BPM - Pop Sweet Spot</h4>
+                        <ul class="song-list">
+                            <li>"Dancing Queen" - ABBA (100 BPM)</li>
+                            <li>"Anti-Hero" - Taylor Swift (97 BPM)</li>
+                            <li>"Girls Just Wanna Have Fun" - Cyndi Lauper (120 BPM)</li>
+                        </ul>
+                    </div>
+                    <div class="info-card algorithm-card">
+                        <h4>120-140 BPM - Dance & Energy</h4>
+                        <ul class="song-list">
+                            <li>"Uptown Funk" - Bruno Mars (115 BPM)</li>
+                            <li>"Beat It" - Michael Jackson (138 BPM)</li>
+                            <li>"Blinding Lights" - The Weeknd (171 BPM)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Workout & Exercise BPM Guide</h3>
+                <p>Music tempo significantly affects exercise performance. Research shows that matching BPM to your activity can improve workout effectiveness by up to 15%.</p>
+                <div class="workout-bpm-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Activity</th>
+                                <th>Recommended BPM</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Yoga / Stretching</td>
+                                <td>60-90 BPM</td>
+                                <td>Slow, calming for relaxation</td>
+                            </tr>
+                            <tr>
+                                <td>Walking</td>
+                                <td>100-120 BPM</td>
+                                <td>Matches natural walking pace</td>
+                            </tr>
+                            <tr>
+                                <td>Jogging</td>
+                                <td>120-140 BPM</td>
+                                <td>Comfortable running cadence</td>
+                            </tr>
+                            <tr>
+                                <td>Running</td>
+                                <td>140-160 BPM</td>
+                                <td>Faster pace, higher intensity</td>
+                            </tr>
+                            <tr>
+                                <td>Cycling / Spinning</td>
+                                <td>130-170 BPM</td>
+                                <td>Varies with resistance</td>
+                            </tr>
+                            <tr>
+                                <td>HIIT / Sprinting</td>
+                                <td>150-180+ BPM</td>
+                                <td>Maximum effort intervals</td>
+                            </tr>
+                            <tr>
+                                <td>Zumba / Dance</td>
+                                <td>130-170 BPM</td>
+                                <td>High energy dance moves</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </article>
         </section>
 
@@ -279,7 +500,25 @@
                             <code>5 beats per measure, quarter note = 1 beat</code>
                         </div>
                         <p>An "odd" or asymmetric time signature. Often felt as 3+2 or 2+3. Creates an unusual, slightly off-balance feel that can be very effective.</p>
-                        <p class="noise-specs"><strong>Feel:</strong> Unusual, asymmetric, modern<br><strong>Count:</strong> 1-2-3-1-2 or 1-2-1-2-3</p>
+                        <p class="noise-specs"><strong>Feel:</strong> Unusual, asymmetric, modern<br><strong>Count:</strong> 1-2-3-1-2 or 1-2-1-2-3<br><strong>Famous Example:</strong> "Take Five" by Dave Brubeck</p>
+                    </div>
+
+                    <div class="info-card algorithm-card">
+                        <h4>7/8 - Progressive</h4>
+                        <div class="math-block small">
+                            <code>7 beats per measure, eighth note = 1 beat</code>
+                        </div>
+                        <p>Popular in progressive rock and world music. Usually grouped as 2+2+3, 3+2+2, or 2+3+2, creating a distinctive rhythmic drive.</p>
+                        <p class="noise-specs"><strong>Feel:</strong> Driving, complex, energetic<br><strong>Count:</strong> Varies by grouping<br><strong>Famous Example:</strong> "Money" by Pink Floyd</p>
+                    </div>
+
+                    <div class="info-card algorithm-card">
+                        <h4>12/8 - Compound Quadruple</h4>
+                        <div class="math-block small">
+                            <code>12 beats per measure, eighth note = 1 beat</code>
+                        </div>
+                        <p>Feels like 4 groups of 3. Common in blues, slow rock ballads, and gospel music. Has a triplet-based, swinging feel.</p>
+                        <p class="noise-specs"><strong>Feel:</strong> Bluesy, swinging, soulful<br><strong>Count:</strong> 1-2-3-2-2-3-3-2-3-4-2-3</p>
                     </div>
                 </div>
 
@@ -293,15 +532,95 @@
                     <li><strong>Triplets:</strong> Three equal sounds per beat - "1 trip let 2 trip let"</li>
                 </ul>
 
-                <h3>Tips for Practicing with a Metronome</h3>
+                <h3>Introduction to Polyrhythms</h3>
+                <p>A polyrhythm is two or more contrasting rhythms played simultaneously. The most common is 3:2 (three against two), also known as a hemiola.</p>
+
+                <div class="info-card algorithm-card" style="margin-top: 1rem;">
+                    <h4>The 3:2 Polyrhythm</h4>
+                    <p>To practice 3:2, play three evenly-spaced notes against two evenly-spaced notes. A helpful phrase is "Not Dif-fi-cult" where "Not" and "cult" align with the 2-beat, and "Not", "fi", and "cult" align with the 3-beat.</p>
+                    <div class="math-block small">
+                        <code>2-beat: X . . X . .<br>3-beat: X . X . X .</code>
+                    </div>
+                    <p class="noise-specs"><strong>Tips:</strong> Start very slowly (40-50 BPM). Tap the 2-beat with one hand and 3-beat with the other. Master each hand separately first before combining.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- Practice Tips Section -->
+        <section class="content-section" id="practice-tips">
+            <article class="content-article">
+                <h2>How to Practice Effectively with a Metronome</h2>
+                <p class="intro-text">A metronome is not just for keeping time - it is one of the most powerful tools for improving your musicianship when used correctly.</p>
+
+                <h3>The Golden Rules of Metronome Practice</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4><i class="ri-number-1"></i> Start Slower Than You Think</h4>
+                        <p>Begin at a tempo where you can play perfectly and comfortably - even if that means 50 BPM. Your focus is to build muscle memory correctly, not to impress yourself with speed.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="ri-number-2"></i> Increase Gradually</h4>
+                        <p>Raise the tempo by only 2-5 BPM at a time. Use the Tempo Trainer feature to automate gradual increases. If accuracy drops, go back to the previous tempo.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="ri-number-3"></i> Play WITH the Click, Not Against It</h4>
+                        <p>Your goal is to make your notes land exactly with the click, so they almost disappear into each other. If you can clearly hear the click separate from your playing, your timing needs work.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="ri-number-4"></i> Use Subdivisions</h4>
+                        <p>Practice with eighth notes or sixteenth notes to internalize the beat more deeply. Subdivisions help you understand exactly where each note should fall within the beat.</p>
+                    </div>
+                </div>
+
+                <h3>Advanced Techniques</h3>
+
+                <div class="info-card algorithm-card">
+                    <h4><i class="ri-volume-mute-line"></i> Muted Beats Training</h4>
+                    <p>Enable "Muted Beats" to develop your internal timing. Start with 4 bars of click, 1 bar of silence. As you improve, increase the silent bars. The goal is to stay perfectly in time even when the click disappears.</p>
+                    <p class="noise-specs"><strong>Why it works:</strong> Forces you to internalize the pulse rather than relying on the click. Professional musicians use this technique to develop a rock-solid internal clock.</p>
+                </div>
+
+                <div class="info-card algorithm-card">
+                    <h4><i class="ri-speed-up-line"></i> Speed Building with Tempo Trainer</h4>
+                    <p>Use the Tempo Trainer for systematic speed development. Set your comfortable tempo as the start, your target tempo as the goal, and a duration of 5-10 minutes. The gradual increase lets your muscles adapt without developing tension.</p>
+                    <p class="noise-specs"><strong>Pro tip:</strong> If you hit a "speed wall", go back 10-15 BPM and work on relaxation and efficiency before trying again.</p>
+                </div>
+
+                <div class="info-card algorithm-card">
+                    <h4><i class="ri-focus-2-line"></i> The "3 Perfect Reps" Rule</h4>
+                    <p>At each tempo, play the passage perfectly 3 times in a row before increasing speed. One mistake means you start the count over. This ensures you are actually mastering each tempo level.</p>
+                    <p class="noise-specs"><strong>Variation:</strong> For longer pieces, apply this rule to short sections (4-8 bars) rather than the whole piece.</p>
+                </div>
+
+                <h3>Common Mistakes to Avoid</h3>
                 <ul class="feature-list">
-                    <li><strong>Start Slow:</strong> Begin at a tempo where you can play perfectly, then gradually increase</li>
-                    <li><strong>Use Subdivisions:</strong> Practice with eighth or sixteenth notes to internalize the beat</li>
-                    <li><strong>Accent Practice:</strong> Practice placing accents on different beats to improve control</li>
-                    <li><strong>Gradual Tempo Changes:</strong> Use the metronome to practice accelerandos and ritardandos</li>
-                    <li><strong>Play Without Looking:</strong> Close your eyes occasionally to rely purely on listening</li>
-                    <li><strong>Record Yourself:</strong> Compare your playing to the metronome to identify timing issues</li>
+                    <li><strong>Practicing too fast:</strong> Speed without accuracy builds bad habits that are hard to unlearn</li>
+                    <li><strong>Ignoring the metronome:</strong> If you find yourself rushing or dragging, stop and listen more carefully</li>
+                    <li><strong>Never turning it off:</strong> Occasional practice without the metronome tests your internal timing</li>
+                    <li><strong>Only practicing difficult passages:</strong> Use the metronome for scales, warm-ups, and easy music too</li>
+                    <li><strong>Setting it and forgetting it:</strong> Actively listen and engage with the click throughout your practice</li>
                 </ul>
+
+                <h3>Practice Session Structure</h3>
+                <p>A well-structured practice session using the metronome might look like this:</p>
+                <div class="session-structure">
+                    <div class="session-item">
+                        <span class="session-time">5-10 min</span>
+                        <span class="session-activity"><strong>Warm-up:</strong> Scales and arpeggios at comfortable tempo (60-80 BPM)</span>
+                    </div>
+                    <div class="session-item">
+                        <span class="session-time">15-20 min</span>
+                        <span class="session-activity"><strong>Technical work:</strong> Exercises and etudes with tempo trainer (gradually increasing)</span>
+                    </div>
+                    <div class="session-item">
+                        <span class="session-time">15-20 min</span>
+                        <span class="session-activity"><strong>Repertoire:</strong> Difficult passages with metronome, then full pieces</span>
+                    </div>
+                    <div class="session-item">
+                        <span class="session-time">5-10 min</span>
+                        <span class="session-activity"><strong>Cool-down:</strong> Play through something enjoyable at comfortable tempo</span>
+                    </div>
+                </div>
             </article>
         </section>
 
@@ -309,13 +628,15 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="footer-logo">Metronome Online</span>
-                    <p>Free online metronome with precise Web Audio timing. Perfect for musicians, students, and practice sessions.</p>
+                    <p>Free online metronome with professional practice features. Tempo trainer, practice timer, setlist management, and fullscreen mode. Perfect for musicians, students, and drummers.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <a href="#metronome">Metronome</a>
-                    <a href="#settings">Settings</a>
+                    <a href="#practice-tools">Practice Tools</a>
+                    <a href="#setlist">Setlist</a>
                     <a href="#about-tempo">Tempo Guide</a>
+                    <a href="#practice-tips">Practice Tips</a>
                 </div>
                 <div class="footer-related">
                     <h4>Related Tools</h4>
@@ -327,6 +648,31 @@
                 <p>Part of the Audio Tools Network. For educational and personal use.</p>
             </div>
         </footer>
+    </div>
+
+    <!-- Fullscreen Overlay -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <div class="fullscreen-content">
+            <div class="fullscreen-bpm" id="fullscreenBPM">120</div>
+            <div class="fullscreen-bpm-label">BPM</div>
+            <div class="fullscreen-beats" id="fullscreenBeats">
+                <div class="fullscreen-beat-dot accent"></div>
+                <div class="fullscreen-beat-dot"></div>
+                <div class="fullscreen-beat-dot"></div>
+                <div class="fullscreen-beat-dot"></div>
+            </div>
+            <div class="fullscreen-timer" id="fullscreenTimer">--:--</div>
+            <div class="fullscreen-status" id="fullscreenStatus">Ready</div>
+            <div class="fullscreen-controls">
+                <button class="fullscreen-play-btn" id="fullscreenPlay">
+                    <i class="ri-play-fill"></i> Start
+                </button>
+                <button class="fullscreen-exit-btn" id="fullscreenExit">
+                    <i class="ri-fullscreen-exit-line"></i> Exit
+                </button>
+            </div>
+            <div class="fullscreen-hint">Press <kbd>Space</kbd> to play/stop, <kbd>Esc</kbd> to exit</div>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/metronome.js') }}"></script>
