@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metronome Online - Free Precision Metronome for Musicians</title>
+    <meta name="description" content="Free online metronome with precise timing, tap tempo, multiple time signatures, and subdivision options. Perfect for musicians, music students, and practice sessions.">
+    <meta name="keywords" content="metronome, online metronome, free metronome, tap tempo, time signature, music practice, rhythm training, BPM">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <div class="header-content">
+                <h1>Metronome Online</h1>
+                <p class="tagline">Precision timing for musicians and practice sessions</p>
+            </div>
+            <div class="header-badges">
+                <span class="header-badge"><i class="ri-music-2-line"></i> Practice</span>
+                <span class="header-badge"><i class="ri-timer-line"></i> Precise</span>
+                <span class="header-badge"><i class="ri-hand-coin-line"></i> Free</span>
+            </div>
+        </header>
+
+        <nav class="mini-nav">
+            <a href="#metronome" class="nav-link"><i class="ri-play-circle-line"></i> Metronome</a>
+            <a href="#settings" class="nav-link"><i class="ri-settings-4-line"></i> Settings</a>
+            <a href="#about-tempo" class="nav-link"><i class="ri-book-open-line"></i> Tempo Guide</a>
+            <a href="#about-rhythm" class="nav-link"><i class="ri-rhythm-line"></i> Rhythm</a>
+        </nav>
+
+        <div class="main-controls" id="metronome">
+            <!-- Tempo Presets -->
+            <div class="presets">
+                <div class="preset-group">
+                    <h3>Tempo Markings</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn tempo-preset" data-bpm="50">
+                            <i class="ri-snail-line"></i> Largo
+                        </button>
+                        <button class="preset-btn tempo-preset" data-bpm="70">
+                            <i class="ri-walk-line"></i> Adagio
+                        </button>
+                        <button class="preset-btn tempo-preset" data-bpm="92">
+                            <i class="ri-run-line"></i> Andante
+                        </button>
+                        <button class="preset-btn tempo-preset" data-bpm="112">
+                            <i class="ri-speed-line"></i> Moderato
+                        </button>
+                        <button class="preset-btn tempo-preset" data-bpm="140">
+                            <i class="ri-flashlight-line"></i> Allegro
+                        </button>
+                        <button class="preset-btn tempo-preset" data-bpm="180">
+                            <i class="ri-fire-line"></i> Presto
+                        </button>
+                    </div>
+                </div>
+                <div class="preset-group">
+                    <h3>Time Signature</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn time-sig-btn" data-beats="2" data-note="4">2/4</button>
+                        <button class="preset-btn time-sig-btn" data-beats="3" data-note="4">3/4</button>
+                        <button class="preset-btn time-sig-btn active" data-beats="4" data-note="4">4/4</button>
+                        <button class="preset-btn time-sig-btn" data-beats="5" data-note="4">5/4</button>
+                        <button class="preset-btn time-sig-btn" data-beats="6" data-note="8">6/8</button>
+                        <button class="preset-btn time-sig-btn" data-beats="7" data-note="8">7/8</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BPM Display and Control -->
+            <div class="bpm-display">
+                <div class="bpm-value-container">
+                    <button class="bpm-adjust-btn" id="bpmDown" aria-label="Decrease BPM">
+                        <i class="ri-subtract-line"></i>
+                    </button>
+                    <div class="bpm-value-wrapper">
+                        <input type="number" id="bpmInput" class="bpm-input" value="120" min="20" max="300">
+                        <span class="bpm-label">BPM</span>
+                    </div>
+                    <button class="bpm-adjust-btn" id="bpmUp" aria-label="Increase BPM">
+                        <i class="ri-add-line"></i>
+                    </button>
+                </div>
+                <input type="range" id="bpmSlider" class="bpm-slider" min="20" max="300" value="120">
+                <div class="bpm-range-labels">
+                    <span>20</span>
+                    <span>100</span>
+                    <span>200</span>
+                    <span>300</span>
+                </div>
+            </div>
+
+            <!-- Beat Indicator -->
+            <div class="beat-indicator" id="beatIndicator">
+                <div class="beat-dot accent" data-beat="1"></div>
+                <div class="beat-dot" data-beat="2"></div>
+                <div class="beat-dot" data-beat="3"></div>
+                <div class="beat-dot" data-beat="4"></div>
+            </div>
+
+            <!-- Status -->
+            <div class="status-badge ready" id="statusBadge">
+                <span class="status-icon">●</span>
+                <span class="status-text">Ready</span>
+            </div>
+
+            <!-- Play Button -->
+            <div class="action-buttons">
+                <button id="playButton" class="primary-btn">
+                    <i class="ri-play-fill"></i>
+                    <span>Start</span>
+                </button>
+                <button id="tapButton" class="secondary-btn">
+                    <i class="ri-hand-coin-line"></i>
+                    <span>Tap Tempo</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Settings Controls -->
+        <div class="controls" id="settings">
+            <div class="control-group">
+                <h3>Sound Options</h3>
+
+                <label for="soundType">Click Sound</label>
+                <div class="sound-buttons">
+                    <button class="sound-btn active" data-sound="click">
+                        <i class="ri-checkbox-blank-circle-fill"></i> Click
+                    </button>
+                    <button class="sound-btn" data-sound="wood">
+                        <i class="ri-shapes-line"></i> Wood Block
+                    </button>
+                    <button class="sound-btn" data-sound="drum">
+                        <i class="ri-disc-line"></i> Drum
+                    </button>
+                </div>
+
+                <label for="subdivision">Subdivision</label>
+                <div class="subdivision-buttons">
+                    <button class="subdivision-btn active" data-subdivision="1">
+                        <span class="note-icon">&#119135;</span> Quarter
+                    </button>
+                    <button class="subdivision-btn" data-subdivision="2">
+                        <span class="note-icon">&#119136;</span> Eighth
+                    </button>
+                    <button class="subdivision-btn" data-subdivision="4">
+                        <span class="note-icon">&#119137;</span> Sixteenth
+                    </button>
+                    <button class="subdivision-btn" data-subdivision="3">
+                        <span class="note-icon">3</span> Triplets
+                    </button>
+                </div>
+
+                <div class="accent-toggle">
+                    <label for="accentToggle">
+                        <input type="checkbox" id="accentToggle" checked>
+                        <span class="toggle-slider"></span>
+                        Accent first beat
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Volume</h3>
+
+                <label for="volume">Master Volume</label>
+                <input type="range" id="volume" min="0" max="100" value="75">
+                <span class="value" id="volumeValue">75%</span>
+
+                <label for="accentVolume">Accent Volume</label>
+                <input type="range" id="accentVolume" min="100" max="150" value="130">
+                <span class="value" id="accentVolumeValue">130%</span>
+            </div>
+        </div>
+
+        <!-- Educational Content: Tempo -->
+        <section class="content-section" id="about-tempo">
+            <article class="content-article">
+                <h2>Understanding Tempo</h2>
+                <p class="intro-text">Tempo is the speed or pace of a piece of music, measured in beats per minute (BPM). Understanding tempo markings helps musicians interpret and perform music as the composer intended.</p>
+
+                <h3>Traditional Tempo Markings</h3>
+                <p>Italian tempo markings have been used in Western music for centuries. Each term describes not just a speed range, but often a character or mood as well.</p>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4><i class="ri-snail-line"></i> Largo (40-60 BPM)</h4>
+                        <p>Very slow and broad. Creates a sense of grandeur, solemnity, or deep emotion. Often used for funeral marches, solemn processionals, or deeply expressive passages.</p>
+                        <p class="noise-specs"><strong>Character:</strong> Stately, solemn, expansive<br><strong>Examples:</strong> Handel's "Largo", slow movements of Baroque concertos</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="ri-walk-line"></i> Adagio (66-76 BPM)</h4>
+                        <p>Slow and expressive. Allows time for emotional depth and ornamentation. Common in slow movements of classical symphonies and concertos.</p>
+                        <p class="noise-specs"><strong>Character:</strong> Leisurely, expressive, gentle<br><strong>Examples:</strong> Beethoven's "Moonlight Sonata" first movement</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="ri-run-line"></i> Andante (76-108 BPM)</h4>
+                        <p>At a walking pace. The word comes from Italian "andare" (to walk). Creates a natural, unhurried flow suitable for melodic passages.</p>
+                        <p class="noise-specs"><strong>Character:</strong> Walking pace, flowing, natural<br><strong>Examples:</strong> Mozart's "Andante" movements</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="ri-speed-line"></i> Moderato (108-120 BPM)</h4>
+                        <p>Moderate speed. The middle ground between slow and fast, suitable for many types of musical expression.</p>
+                        <p class="noise-specs"><strong>Character:</strong> Balanced, versatile, steady<br><strong>Examples:</strong> Many pop songs, marches</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="ri-flashlight-line"></i> Allegro (120-168 BPM)</h4>
+                        <p>Fast, lively, and bright. The most common tempo for energetic movements. Conveys joy, excitement, or urgency.</p>
+                        <p class="noise-specs"><strong>Character:</strong> Lively, bright, joyful<br><strong>Examples:</strong> Vivaldi's "Four Seasons" fast movements</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="ri-fire-line"></i> Presto (168-200 BPM)</h4>
+                        <p>Very fast. Demands technical virtuosity from performers. Creates excitement, intensity, or dramatic effect.</p>
+                        <p class="noise-specs"><strong>Character:</strong> Extremely fast, virtuosic, exciting<br><strong>Examples:</strong> Rimsky-Korsakov's "Flight of the Bumblebee"</p>
+                    </div>
+                </div>
+
+                <h3>Modern BPM Reference</h3>
+                <ul class="feature-list">
+                    <li><strong>60 BPM:</strong> One beat per second - easy to count with a clock</li>
+                    <li><strong>80-100 BPM:</strong> Common tempo for ballads and slower pop songs</li>
+                    <li><strong>120 BPM:</strong> Standard "march" tempo, common in dance music</li>
+                    <li><strong>128 BPM:</strong> Standard tempo for house and techno music</li>
+                    <li><strong>140-160 BPM:</strong> Drum and bass, faster electronic genres</li>
+                    <li><strong>170-180 BPM:</strong> Fast punk rock, speed metal</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Educational Content: Rhythm -->
+        <section class="content-section" id="about-rhythm">
+            <article class="content-article">
+                <h2>Understanding Time Signatures and Rhythm</h2>
+                <p class="intro-text">Time signatures tell you how music is organized into measures and beats. Understanding them is fundamental to reading and performing music correctly.</p>
+
+                <h3>Reading Time Signatures</h3>
+                <p>A time signature appears at the beginning of a piece as two numbers stacked vertically. The top number tells you how many beats are in each measure. The bottom number tells you what note value equals one beat.</p>
+
+                <div class="info-grid">
+                    <div class="info-card algorithm-card">
+                        <h4>4/4 - Common Time</h4>
+                        <div class="math-block small">
+                            <code>4 beats per measure, quarter note = 1 beat</code>
+                        </div>
+                        <p>The most common time signature in Western music. Also called "common time" and sometimes written as a "C" symbol. Used in rock, pop, classical, jazz, and virtually every genre.</p>
+                        <p class="noise-specs"><strong>Feel:</strong> Steady, balanced, natural<br><strong>Count:</strong> 1-2-3-4</p>
+                    </div>
+
+                    <div class="info-card algorithm-card">
+                        <h4>3/4 - Waltz Time</h4>
+                        <div class="math-block small">
+                            <code>3 beats per measure, quarter note = 1 beat</code>
+                        </div>
+                        <p>Creates the characteristic "oom-pah-pah" feel of waltzes. The first beat is typically emphasized, giving a swaying, dance-like quality.</p>
+                        <p class="noise-specs"><strong>Feel:</strong> Lilting, dance-like, elegant<br><strong>Count:</strong> 1-2-3</p>
+                    </div>
+
+                    <div class="info-card algorithm-card">
+                        <h4>6/8 - Compound Duple</h4>
+                        <div class="math-block small">
+                            <code>6 beats per measure, eighth note = 1 beat</code>
+                        </div>
+                        <p>Feels like 2 groups of 3. Common in jigs, marches, and many classical pieces. Has a rolling, flowing quality different from 3/4.</p>
+                        <p class="noise-specs"><strong>Feel:</strong> Rolling, compound, flowing<br><strong>Count:</strong> 1-2-3-4-5-6 or 1-and-a-2-and-a</p>
+                    </div>
+
+                    <div class="info-card algorithm-card">
+                        <h4>5/4 - Asymmetric</h4>
+                        <div class="math-block small">
+                            <code>5 beats per measure, quarter note = 1 beat</code>
+                        </div>
+                        <p>An "odd" or asymmetric time signature. Often felt as 3+2 or 2+3. Creates an unusual, slightly off-balance feel that can be very effective.</p>
+                        <p class="noise-specs"><strong>Feel:</strong> Unusual, asymmetric, modern<br><strong>Count:</strong> 1-2-3-1-2 or 1-2-1-2-3</p>
+                    </div>
+                </div>
+
+                <h3>Subdivisions Explained</h3>
+                <p>Subdivisions divide each beat into smaller, equal parts. Practicing with subdivisions improves timing accuracy and helps internalize complex rhythms.</p>
+
+                <ul class="feature-list">
+                    <li><strong>Quarter Notes:</strong> One sound per beat - the basic pulse of the metronome</li>
+                    <li><strong>Eighth Notes:</strong> Two equal sounds per beat - "1 and 2 and 3 and 4 and"</li>
+                    <li><strong>Sixteenth Notes:</strong> Four equal sounds per beat - "1 e and a 2 e and a"</li>
+                    <li><strong>Triplets:</strong> Three equal sounds per beat - "1 trip let 2 trip let"</li>
+                </ul>
+
+                <h3>Tips for Practicing with a Metronome</h3>
+                <ul class="feature-list">
+                    <li><strong>Start Slow:</strong> Begin at a tempo where you can play perfectly, then gradually increase</li>
+                    <li><strong>Use Subdivisions:</strong> Practice with eighth or sixteenth notes to internalize the beat</li>
+                    <li><strong>Accent Practice:</strong> Practice placing accents on different beats to improve control</li>
+                    <li><strong>Gradual Tempo Changes:</strong> Use the metronome to practice accelerandos and ritardandos</li>
+                    <li><strong>Play Without Looking:</strong> Close your eyes occasionally to rely purely on listening</li>
+                    <li><strong>Record Yourself:</strong> Compare your playing to the metronome to identify timing issues</li>
+                </ul>
+            </article>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">Metronome Online</span>
+                    <p>Free online metronome with precise Web Audio timing. Perfect for musicians, students, and practice sessions.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#metronome">Metronome</a>
+                    <a href="#settings">Settings</a>
+                    <a href="#about-tempo">Tempo Guide</a>
+                </div>
+                <div class="footer-related">
+                    <h4>Related Tools</h4>
+                    <a href="https://noisegenerator.com" target="_blank">Noise Generator</a>
+                    <a href="https://sirengenerator.com" target="_blank">Siren Generator</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Part of the Audio Tools Network. For educational and personal use.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/metronome.js') }}"></script>
+</body>
+</html>
