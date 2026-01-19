@@ -1,0 +1,395 @@
+{% extends "base.html" %}
+
+{% block title %}Metronome FAQ - Common Questions About Rhythm, Tempo & Practice | Metronomely{% endblock %}
+
+{% block description %}Answers to frequently asked questions about metronomes, tempo markings, time signatures, practice techniques, and rhythm training for musicians.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="Metronome FAQ - Common Questions About Rhythm & Practice">
+<meta property="og:description" content="Expert answers about tempo, time signatures, practice methods, and how to use a metronome effectively.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://metronomely.com/faq">
+
+<!-- FAQ Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is BPM and how is it measured?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BPM stands for Beats Per Minute, which measures tempo - the speed of music. A metronome set to 60 BPM produces one click per second. 120 BPM means two clicks per second. BPM is measured by counting the number of beats that occur in one minute. You can use tap tempo to measure the BPM of any music by tapping along with the beat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What tempo should I practice at?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start at a tempo where you can play perfectly - even if that's very slow (40-60 BPM). The goal is to build correct muscle memory, not to impress yourself with speed. Once you can play a passage three times perfectly at a given tempo, increase by only 2-5 BPM. This deliberate, incremental approach builds speed more effectively than practicing fast with mistakes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do tempo markings like Allegro and Adagio mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Italian tempo markings indicate approximate speed ranges and musical character. Common markings include: Largo (40-60 BPM) - very slow and broad; Adagio (66-76 BPM) - slow and expressive; Andante (76-108 BPM) - walking pace; Moderato (108-120 BPM) - moderate speed; Allegro (120-168 BPM) - fast and lively; Presto (168-200 BPM) - very fast. These are guidelines, not strict rules - interpretation varies by era, piece, and performer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a time signature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A time signature is two numbers at the beginning of music that tell you how the beat is organized. The top number shows how many beats are in each measure. The bottom number shows what note value equals one beat (4 means quarter note, 8 means eighth note). For example, 4/4 means four quarter-note beats per measure, while 6/8 means six eighth-note beats per measure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use tap tempo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tap tempo allows you to set the metronome speed by tapping a button in rhythm with the music you want to match. Tap the button (or press 'T' on your keyboard) at least 3-4 times in steady rhythm. The metronome will calculate the average time between taps and set itself to that tempo. This is useful for matching a recording or finding the tempo of a song in your head."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are subdivisions and why use them?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Subdivisions divide each beat into smaller parts. Quarter notes give one click per beat. Eighth notes give two clicks per beat (counted '1 and 2 and'). Sixteenth notes give four clicks per beat ('1 e and a 2 e and a'). Triplets give three clicks per beat. Using subdivisions helps internalize the beat more deeply, improves timing accuracy, and helps you understand exactly where notes fall within each beat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I always practice with a metronome?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not always, but regularly. Use the metronome for technical exercises, learning new pieces, and working on timing problems. Also practice without it to develop your internal sense of time and musical expression. A good approach is to learn passages with the metronome, then turn it off to check if you can maintain the tempo independently. The goal is to internalize the beat, not to become dependent on external cues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the tempo trainer feature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tempo trainer gradually increases the metronome speed over time. You set a starting BPM, target BPM, and duration. The tempo automatically increases throughout your practice session. This is useful for building speed safely - the gradual increase allows your muscles to adapt without developing tension or making errors that come from sudden tempo jumps."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block tagline %}Answers to common questions about rhythm and timing{% endblock %}
+
+{% block content %}
+<div class="faq-container">
+    <div class="faq-hero">
+        <h1>Frequently Asked Questions</h1>
+        <p>Expert answers about tempo, time signatures, practice methods, and how to use a metronome effectively for musical development.</p>
+    </div>
+
+    <!-- Basic Concepts Section -->
+    <section class="faq-section">
+        <h2>Basic Concepts</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is BPM and how is it measured?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>BPM stands for Beats Per Minute</strong>, which measures tempo - the speed of music. A metronome set to 60 BPM produces one click per second. 120 BPM means two clicks per second.</p>
+                <p>BPM is measured by counting the number of beats that occur in one minute. You can use <strong>tap tempo</strong> to measure the BPM of any music by tapping along with the beat - the metronome calculates the time between your taps and displays the tempo.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What do tempo markings like Allegro and Adagio mean?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Italian tempo markings indicate approximate speed ranges and musical character. Common markings include:</p>
+                <p><strong>Largo (40-60 BPM):</strong> Very slow and broad<br>
+                <strong>Adagio (66-76 BPM):</strong> Slow and expressive<br>
+                <strong>Andante (76-108 BPM):</strong> Walking pace<br>
+                <strong>Moderato (108-120 BPM):</strong> Moderate speed<br>
+                <strong>Allegro (120-168 BPM):</strong> Fast and lively<br>
+                <strong>Presto (168-200 BPM):</strong> Very fast</p>
+                <p>These are guidelines, not strict rules. Interpretation varies by era, piece, and performer. A Beethoven Allegro might be different from a Bach Allegro.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is a time signature?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>A <strong>time signature</strong> is two numbers at the beginning of music that tell you how the beat is organized:</p>
+                <p>- <strong>Top number:</strong> How many beats are in each measure<br>
+                - <strong>Bottom number:</strong> What note value equals one beat (4 = quarter note, 8 = eighth note)</p>
+                <p>For example, <strong>4/4</strong> means four quarter-note beats per measure (the most common time signature). <strong>3/4</strong> is waltz time with three beats per measure. <strong>6/8</strong> means six eighth-note beats, usually felt as two groups of three.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What are subdivisions and why use them?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Subdivisions</strong> divide each beat into smaller parts:</p>
+                <p>- <strong>Quarter notes:</strong> One click per beat<br>
+                - <strong>Eighth notes:</strong> Two clicks per beat (counted "1 and 2 and")<br>
+                - <strong>Sixteenth notes:</strong> Four clicks per beat ("1 e and a 2 e and a")<br>
+                - <strong>Triplets:</strong> Three clicks per beat</p>
+                <p>Using subdivisions helps you <strong>internalize the beat</strong> more deeply, improves timing accuracy, and helps you understand exactly where notes fall within each beat. They're especially useful for practicing passages with complex rhythms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Techniques Section -->
+    <section class="faq-section">
+        <h2>Practice Techniques</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What tempo should I practice at?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Start at a tempo where you can play perfectly</strong> - even if that's very slow (40-60 BPM). The goal is to build correct muscle memory, not to impress yourself with speed.</p>
+                <p>Once you can play a passage three times perfectly at a given tempo, increase by only <strong>2-5 BPM</strong>. This deliberate, incremental approach builds speed more effectively than practicing fast with mistakes.</p>
+                <p>If accuracy drops at a new tempo, go back and consolidate at the previous speed before trying again.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Should I always practice with a metronome?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Not always, but regularly.</strong> Use the metronome for technical exercises, learning new pieces, and working on timing problems. Also practice without it to develop your internal sense of time and musical expression.</p>
+                <p>A good approach is to learn passages with the metronome, then turn it off to check if you can maintain the tempo independently. The goal is to <strong>internalize the beat</strong>, not to become dependent on external cues.</p>
+                <p>For expressive pieces with rubato (tempo flexibility), learn the structure with a metronome first, then practice your intended tempo variations deliberately.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is the tempo trainer feature?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The <strong>tempo trainer</strong> gradually increases the metronome speed over time. You set a starting BPM, target BPM, and duration. The tempo automatically increases throughout your practice session.</p>
+                <p>This is useful for building speed safely - the gradual increase allows your muscles to adapt without developing tension or making errors that come from sudden tempo jumps.</p>
+                <p><strong>Example:</strong> Set start BPM to 80, target BPM to 120, duration to 10 minutes. The metronome will slowly increase by 4 BPM each minute.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What are muted beats and how do I use them?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Muted beats</strong> is a training technique where the metronome periodically goes silent, forcing you to maintain tempo internally. The metronome plays for a set number of bars, then goes silent for a set number of bars, repeating this pattern.</p>
+                <p><strong>How to use it:</strong></p>
+                <p>1. Start with 4 bars click, 1 bar silent<br>
+                2. As you improve, increase silent bars (4:2, 4:4, 4:8)<br>
+                3. Goal: stay perfectly in time when the click returns</p>
+                <p>This develops your <strong>internal clock</strong> - the ability to maintain tempo without external reference. It's how professional musicians develop rock-solid timing.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How do I use tap tempo?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Tap tempo</strong> allows you to set the metronome speed by tapping a button in rhythm with the music you want to match:</p>
+                <p>1. Click the "Tap Tempo" button (or press <strong>T</strong> on your keyboard)<br>
+                2. Tap at least 3-4 times in steady rhythm<br>
+                3. The metronome calculates the average time between taps and sets that tempo</p>
+                <p>This is useful for matching a recording, finding the tempo of a song in your head, or quickly setting the tempo for a piece you're about to practice.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Questions Section -->
+    <section class="faq-section">
+        <h2>Technical Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Why doesn't the metronome sound on my phone?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Mobile browsers require user interaction before playing audio. Make sure you're tapping the "Start" button rather than expecting automatic playback.</p>
+                <p><strong>Also check that:</strong></p>
+                <p>- Your phone isn't on silent/vibrate mode<br>
+                - Volume is turned up<br>
+                - Browser permissions allow audio playback<br>
+                - You're using a recent browser version (Chrome, Safari, Firefox)</p>
+                <p>Some phones have separate media and ringer volumes - make sure media volume is up.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Is the online metronome as accurate as a physical one?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Yes, for practical purposes.</strong> Metronomely uses the Web Audio API, which provides sample-accurate timing. Any variations are measured in microseconds - far below the threshold of human perception.</p>
+                <p>The main timing consideration is audio latency (the delay between when a sound is triggered and when you hear it). This is typically 10-50ms on modern devices - consistent enough that it doesn't affect practice.</p>
+                <p>For professional recording with click tracks, dedicated hardware is sometimes preferred, but for practice purposes, the online metronome is more than accurate enough.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What do the different click sounds mean?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Metronomely offers three click sound options:</p>
+                <p><strong>Click:</strong> A clean, electronic click - the most common and neutral option<br>
+                <strong>Wood Block:</strong> A warmer, acoustic sound some find less fatiguing<br>
+                <strong>Drum:</strong> A snare-like sound useful for drummers or those wanting a more musical feel</p>
+                <p>Choose whichever sound you find easiest to play along with. Many musicians prefer different sounds for different practice contexts.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What are the keyboard shortcuts?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Metronomely supports keyboard shortcuts for quick control:</p>
+                <p><strong>Space:</strong> Play/Stop the metronome<br>
+                <strong>Up Arrow:</strong> Increase BPM by 1<br>
+                <strong>Down Arrow:</strong> Decrease BPM by 1<br>
+                <strong>T:</strong> Tap tempo<br>
+                <strong>F:</strong> Toggle fullscreen mode<br>
+                <strong>1-9:</strong> Load songs from your setlist</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How do I save songs to my setlist?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The <strong>setlist</strong> feature lets you save tempo and time signature settings for quick recall:</p>
+                <p>1. Set your desired BPM and time signature<br>
+                2. Optionally enter a song name<br>
+                3. Click "Save Current Settings"</p>
+                <p>Your setlist is saved in your browser's local storage, so it persists between sessions. You can load songs by clicking them or pressing number keys 1-9.</p>
+                <p>Use <strong>Export</strong> to save your setlist as a file, and <strong>Import</strong> to load a previously exported setlist.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Musical Concepts Section -->
+    <section class="faq-section">
+        <h2>Musical Concepts</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What's the difference between 3/4 and 6/8 time?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Both have six eighth notes per measure, but they're felt differently:</p>
+                <p><strong>3/4:</strong> Three quarter-note beats per measure. Counted "1-2-3, 1-2-3" with equal emphasis. Think of a waltz - the first beat is strong.</p>
+                <p><strong>6/8:</strong> Six eighth-note beats, but usually felt as two groups of three. Counted "1-2-3-4-5-6" or "1-and-a-2-and-a" with emphasis on 1 and 4. Has a rolling, compound feel.</p>
+                <p>In Metronomely, set time signature to 3/4 or 6/8 and listen to how the accents change the feel.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What is an accent and why use it?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>An <strong>accent</strong> is a louder click on the first beat of each measure. It helps you hear where the measure begins, making it easier to keep your place in the music.</p>
+                <p>The accent creates the sense of "downbeat" that organizes music into phrases. In 4/4, the accented beat 1 gives structure to the pattern.</p>
+                <p>You can toggle the accent on or off in the settings. Some musicians prefer no accent when working on even, unaccented playing; others always use it for orientation.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What are odd time signatures and how do I practice them?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>Odd time signatures</strong> like 5/4 or 7/8 don't divide evenly into 2s or 3s, creating asymmetric feels:</p>
+                <p><strong>5/4:</strong> Often felt as 3+2 or 2+3. Count "1-2-3-1-2" or "1-2-1-2-3"<br>
+                <strong>7/8:</strong> Often felt as 2+2+3, 3+2+2, or 2+3+2. The grouping affects the feel.</p>
+                <p><strong>Practice approach:</strong></p>
+                <p>1. Start very slow (50-60 BPM)<br>
+                2. Speak the grouping while clapping ("1-2-3-1-2")<br>
+                3. Once comfortable, add your instrument<br>
+                4. Gradually increase tempo</p>
+                <p>Famous examples: "Take Five" (5/4), "Money" by Pink Floyd (7/4).</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How fast is too fast to practice?</span>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+            <div class="faq-answer">
+                <p>You're practicing too fast if:</p>
+                <p>- You're making mistakes (even small ones)<br>
+                - Your body feels tense<br>
+                - You can't hear every note clearly<br>
+                - Your timing becomes inconsistent</p>
+                <p>The upper limit of useful metronome practice is around <strong>200 BPM</strong> for most musicians. Above that, the clicks blur together. For very fast music, practice at half tempo with subdivisions.</p>
+                <p>Remember: practicing slowly and correctly is always more valuable than practicing fast with errors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cross-links -->
+    <div class="cross-links">
+        <a href="/science" class="cross-link-card">
+            <i class="ri-brain-line"></i>
+            <div class="link-content">
+                <h4>Neuroscience of Rhythm</h4>
+                <p>Research behind timing and rhythm</p>
+            </div>
+        </a>
+        <a href="/applications" class="cross-link-card">
+            <i class="ri-tools-line"></i>
+            <div class="link-content">
+                <h4>Practical Applications</h4>
+                <p>Evidence-based practice methods</p>
+            </div>
+        </a>
+        <a href="/traditions" class="cross-link-card">
+            <i class="ri-ancient-gate-line"></i>
+            <div class="link-content">
+                <h4>Rhythm & Spirituality</h4>
+                <p>Contemplative rhythm traditions</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
