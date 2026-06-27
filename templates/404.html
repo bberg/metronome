@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Page not found (404) | Metronomely{% endblock %}
+
+{% block description %}The page you were looking for could not be found. Head back to the Metronomely free online metronome.{% endblock %}
+
+{% block content %}
+<section class="content-section" id="not-found">
+    <article class="content-article" style="text-align: center;">
+        <h1 style="font-size: 4rem; margin-bottom: 0.5rem;">404</h1>
+        <h2>This page slipped out of time</h2>
+        <p class="intro-text">We could not find the page you were looking for. It may have moved, or the link might be off by a beat.</p>
+        <p>Let's get you back in the groove:</p>
+        <div class="action-buttons" style="justify-content: center; margin-top: 1.5rem;">
+            <a href="/" class="primary-btn"><i aria-hidden="true" class="ri-home-4-line"></i> <span>Back to the metronome</span></a>
+        </div>
+        <div class="info-grid" style="margin-top: 2.5rem; text-align: left;">
+            <div class="info-card">
+                <h4><i aria-hidden="true" class="ri-user-star-line"></i> Use Cases</h4>
+                <p>
+                    <a href="/for-guitar">Metronome for guitar</a><br>
+                    <a href="/for-drums">Metronome for drums</a><br>
+                    <a href="/for-piano">Metronome for piano</a><br>
+                    <a href="/for-bass">Metronome for bass</a><br>
+                    <a href="/for-singing">Metronome for singing</a>
+                </p>
+            </div>
+            <div class="info-card">
+                <h4><i aria-hidden="true" class="ri-book-open-line"></i> Learn More</h4>
+                <p>
+                    <a href="/science">Neuroscience of Rhythm</a><br>
+                    <a href="/applications">Practical Applications</a><br>
+                    <a href="/traditions">Rhythm &amp; Spirituality</a><br>
+                    <a href="/faq">FAQ</a>
+                </p>
+            </div>
+        </div>
+    </article>
+</section>
+{% endblock %}

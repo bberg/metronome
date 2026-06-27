@@ -45,6 +45,10 @@ def for_singing():
 def for_bass():
     return render_template('for-bass.html', active_page='for-bass')
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html'), 404
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
@@ -72,55 +76,55 @@ def sitemap():
     <url>
         <loc>https://metronomely.com/science</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://metronomely.com/applications</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://metronomely.com/traditions</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://metronomely.com/faq</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://metronomely.com/for-guitar</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://metronomely.com/for-drums</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://metronomely.com/for-piano</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://metronomely.com/for-singing</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://metronomely.com/for-bass</loc>
         <lastmod>{today}</lastmod>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
 </urlset>'''
