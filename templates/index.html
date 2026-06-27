@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metronomely - Free Online Metronome for Musicians</title>
-    <meta name="description" content="Metronomely is your free online metronome with tempo trainer, practice timer, setlist management, and fullscreen mode. Professional features for musicians, students, and drummers. No download required.">
+    <title>Free online metronome with tap tempo & trainer | Metronomely</title>
+    <meta name="description" content="Free online metronome with tap tempo, time signatures, subdivisions, and a tempo trainer. Practice tighter timing for guitar, drums, and piano - no download.">
     <meta name="keywords" content="metronome, online metronome, free metronome, tap tempo, time signature, music practice, rhythm training, BPM, tempo trainer, practice timer">
 
     <!-- Canonical URL -->
@@ -43,6 +43,11 @@
     }
     </script>
 
+    <!-- Performance: preconnect to third-party origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -61,29 +66,30 @@
     <div class="container">
         <header class="page-header">
             <div class="header-content">
-                <h1>Metronomely</h1>
-                <p class="tagline">Your friendly online metronome - professional practice tools, free forever</p>
+                <h1>Free Online Metronome</h1>
+                <p class="tagline">Set your tempo, hit start, and play in time. Metronomely pairs a rock-steady click with tap tempo, time signatures, subdivisions, and a tempo trainer - all in your browser, free forever.</p>
+                <p class="hero-cta-line">No download, no sign-up. Press <kbd>Space</kbd> or tap Start below to begin.</p>
             </div>
             <div class="header-badges">
-                <span class="header-badge"><i class="ri-music-2-line"></i> Practice</span>
-                <span class="header-badge"><i class="ri-timer-line"></i> Precise</span>
-                <span class="header-badge"><i class="ri-hand-coin-line"></i> Free</span>
-                <span class="header-badge"><i class="ri-fullscreen-line"></i> Fullscreen</span>
+                <span class="header-badge"><i aria-hidden="true" class="ri-music-2-line"></i> Practice</span>
+                <span class="header-badge"><i aria-hidden="true" class="ri-timer-line"></i> Precise</span>
+                <span class="header-badge"><i aria-hidden="true" class="ri-hand-coin-line"></i> Free</span>
+                <span class="header-badge"><i aria-hidden="true" class="ri-fullscreen-line"></i> Fullscreen</span>
             </div>
         </header>
 
         <nav class="mini-nav">
-            <a href="#metronome" class="nav-link"><i class="ri-play-circle-line"></i> Metronome</a>
-            <a href="#practice-tools" class="nav-link"><i class="ri-tools-line"></i> Practice Tools</a>
-            <a href="#setlist" class="nav-link"><i class="ri-file-list-3-line"></i> Setlist</a>
-            <a href="#about-tempo" class="nav-link"><i class="ri-book-open-line"></i> Tempo Guide</a>
+            <a href="#metronome" class="nav-link"><i aria-hidden="true" class="ri-play-circle-line"></i> Metronome</a>
+            <a href="#practice-tools" class="nav-link"><i aria-hidden="true" class="ri-tools-line"></i> Practice Tools</a>
+            <a href="#setlist" class="nav-link"><i aria-hidden="true" class="ri-file-list-3-line"></i> Setlist</a>
+            <a href="#about-tempo" class="nav-link"><i aria-hidden="true" class="ri-book-open-line"></i> Tempo Guide</a>
             <div class="nav-dropdown">
-                <a href="#" class="nav-link dropdown-trigger"><i class="ri-information-line"></i> Learn <i class="ri-arrow-down-s-line dropdown-arrow"></i></a>
+                <a href="#" class="nav-link dropdown-trigger"><i aria-hidden="true" class="ri-information-line"></i> Learn <i aria-hidden="true" class="ri-arrow-down-s-line dropdown-arrow"></i></a>
                 <div class="dropdown-menu">
-                    <a href="/science"><i class="ri-brain-line"></i> Neuroscience of Rhythm</a>
-                    <a href="/applications"><i class="ri-tools-line"></i> Practical Applications</a>
-                    <a href="/traditions"><i class="ri-ancient-gate-line"></i> Rhythm & Spirituality</a>
-                    <a href="/faq"><i class="ri-question-answer-line"></i> FAQ</a>
+                    <a href="/science"><i aria-hidden="true" class="ri-brain-line"></i> Neuroscience of Rhythm</a>
+                    <a href="/applications"><i aria-hidden="true" class="ri-tools-line"></i> Practical Applications</a>
+                    <a href="/traditions"><i aria-hidden="true" class="ri-ancient-gate-line"></i> Rhythm & Spirituality</a>
+                    <a href="/faq"><i aria-hidden="true" class="ri-question-answer-line"></i> FAQ</a>
                 </div>
             </div>
         </nav>
@@ -95,22 +101,22 @@
                     <h3>Tempo Markings</h3>
                     <div class="preset-buttons">
                         <button class="preset-btn tempo-preset" data-bpm="50">
-                            <i class="ri-snail-line"></i> Largo
+                            <i aria-hidden="true" class="ri-snail-line"></i> Largo
                         </button>
                         <button class="preset-btn tempo-preset" data-bpm="70">
-                            <i class="ri-walk-line"></i> Adagio
+                            <i aria-hidden="true" class="ri-walk-line"></i> Adagio
                         </button>
                         <button class="preset-btn tempo-preset" data-bpm="92">
-                            <i class="ri-run-line"></i> Andante
+                            <i aria-hidden="true" class="ri-run-line"></i> Andante
                         </button>
                         <button class="preset-btn tempo-preset" data-bpm="112">
-                            <i class="ri-speed-line"></i> Moderato
+                            <i aria-hidden="true" class="ri-speed-line"></i> Moderato
                         </button>
                         <button class="preset-btn tempo-preset" data-bpm="140">
-                            <i class="ri-flashlight-line"></i> Allegro
+                            <i aria-hidden="true" class="ri-flashlight-line"></i> Allegro
                         </button>
                         <button class="preset-btn tempo-preset" data-bpm="180">
-                            <i class="ri-fire-line"></i> Presto
+                            <i aria-hidden="true" class="ri-fire-line"></i> Presto
                         </button>
                     </div>
                 </div>
@@ -131,14 +137,14 @@
             <div class="bpm-display">
                 <div class="bpm-value-container">
                     <button class="bpm-adjust-btn" id="bpmDown" aria-label="Decrease BPM">
-                        <i class="ri-subtract-line"></i>
+                        <i aria-hidden="true" class="ri-subtract-line"></i>
                     </button>
                     <div class="bpm-value-wrapper">
                         <input type="number" id="bpmInput" class="bpm-input" value="120" min="20" max="300">
                         <span class="bpm-label">BPM</span>
                     </div>
                     <button class="bpm-adjust-btn" id="bpmUp" aria-label="Increase BPM">
-                        <i class="ri-add-line"></i>
+                        <i aria-hidden="true" class="ri-add-line"></i>
                     </button>
                 </div>
                 <input type="range" id="bpmSlider" class="bpm-slider" min="20" max="300" value="120">
@@ -167,15 +173,15 @@
             <!-- Play Button -->
             <div class="action-buttons">
                 <button id="playButton" class="primary-btn">
-                    <i class="ri-play-fill"></i>
+                    <i aria-hidden="true" class="ri-play-fill"></i>
                     <span>Start</span>
                 </button>
                 <button id="tapButton" class="secondary-btn">
-                    <i class="ri-hand-coin-line"></i>
+                    <i aria-hidden="true" class="ri-hand-coin-line"></i>
                     <span>Tap Tempo</span>
                 </button>
                 <button id="fullscreenBtn" class="secondary-btn fullscreen-btn">
-                    <i class="ri-fullscreen-line"></i>
+                    <i aria-hidden="true" class="ri-fullscreen-line"></i>
                     <span>Fullscreen</span>
                 </button>
             </div>
@@ -192,13 +198,13 @@
 
         <!-- Practice Tools Section -->
         <div class="practice-tools-section" id="practice-tools">
-            <h2 class="section-title"><i class="ri-tools-line"></i> Practice Tools</h2>
+            <h2 class="section-title"><i aria-hidden="true" class="ri-tools-line"></i> Practice Tools</h2>
 
             <div class="practice-tools-grid">
                 <!-- Tempo Trainer -->
                 <div class="practice-tool-card">
                     <div class="tool-header">
-                        <h3><i class="ri-speed-up-line"></i> Tempo Trainer</h3>
+                        <h3><i aria-hidden="true" class="ri-speed-up-line"></i> Tempo Trainer</h3>
                         <label class="toggle-switch">
                             <input type="checkbox" id="tempoTrainerToggle">
                             <span class="toggle-slider-sm"></span>
@@ -228,7 +234,7 @@
                 <!-- Practice Timer -->
                 <div class="practice-tool-card">
                     <div class="tool-header">
-                        <h3><i class="ri-timer-2-line"></i> Practice Timer</h3>
+                        <h3><i aria-hidden="true" class="ri-timer-2-line"></i> Practice Timer</h3>
                         <label class="toggle-switch">
                             <input type="checkbox" id="practiceTimerToggle">
                             <span class="toggle-slider-sm"></span>
@@ -248,14 +254,14 @@
                             <input type="number" id="timerDuration" value="15" min="1" max="120">
                         </div>
                         <div class="timer-display-large" id="timerDisplay">15:00</div>
-                        <button class="tool-btn" id="timerReset"><i class="ri-restart-line"></i> Reset Timer</button>
+                        <button class="tool-btn" id="timerReset"><i aria-hidden="true" class="ri-restart-line"></i> Reset Timer</button>
                     </div>
                 </div>
 
                 <!-- Muted Beats Training -->
                 <div class="practice-tool-card">
                     <div class="tool-header">
-                        <h3><i class="ri-volume-mute-line"></i> Muted Beats</h3>
+                        <h3><i aria-hidden="true" class="ri-volume-mute-line"></i> Muted Beats</h3>
                         <label class="toggle-switch">
                             <input type="checkbox" id="mutedBeatsToggle">
                             <span class="toggle-slider-sm"></span>
@@ -278,7 +284,7 @@
                 <!-- Practice Stats -->
                 <div class="practice-tool-card stats-card">
                     <div class="tool-header">
-                        <h3><i class="ri-bar-chart-line"></i> Practice Stats</h3>
+                        <h3><i aria-hidden="true" class="ri-bar-chart-line"></i> Practice Stats</h3>
                     </div>
                     <div class="stats-grid">
                         <div class="stat-item">
@@ -296,12 +302,12 @@
 
         <!-- Setlist Section -->
         <div class="setlist-section" id="setlist">
-            <h2 class="section-title"><i class="ri-file-list-3-line"></i> Setlist</h2>
+            <h2 class="section-title"><i aria-hidden="true" class="ri-file-list-3-line"></i> Setlist</h2>
             <p class="section-description">Save your songs with tempo and time signature for quick recall. Press 1-9 to load songs instantly.</p>
 
             <div class="setlist-add">
                 <input type="text" id="songNameInput" placeholder="Song name (optional)" class="song-name-input">
-                <button id="saveToSetlistBtn" class="tool-btn primary"><i class="ri-add-line"></i> Save Current Settings</button>
+                <button id="saveToSetlistBtn" class="tool-btn primary"><i aria-hidden="true" class="ri-add-line"></i> Save Current Settings</button>
             </div>
 
             <div class="setlist-items" id="setlistItems">
@@ -309,9 +315,9 @@
             </div>
 
             <div class="setlist-actions">
-                <button id="exportSetlistBtn" class="tool-btn"><i class="ri-download-line"></i> Export</button>
-                <button id="importSetlistBtn" class="tool-btn"><i class="ri-upload-line"></i> Import</button>
-                <button id="clearSetlistBtn" class="tool-btn danger"><i class="ri-delete-bin-line"></i> Clear All</button>
+                <button id="exportSetlistBtn" class="tool-btn"><i aria-hidden="true" class="ri-download-line"></i> Export</button>
+                <button id="importSetlistBtn" class="tool-btn"><i aria-hidden="true" class="ri-upload-line"></i> Import</button>
+                <button id="clearSetlistBtn" class="tool-btn danger"><i aria-hidden="true" class="ri-delete-bin-line"></i> Clear All</button>
                 <input type="file" id="importSetlistFile" accept=".json" style="display: none;">
             </div>
         </div>
@@ -324,13 +330,13 @@
                 <label for="soundType">Click Sound</label>
                 <div class="sound-buttons">
                     <button class="sound-btn active" data-sound="click">
-                        <i class="ri-checkbox-blank-circle-fill"></i> Click
+                        <i aria-hidden="true" class="ri-checkbox-blank-circle-fill"></i> Click
                     </button>
                     <button class="sound-btn" data-sound="wood">
-                        <i class="ri-shapes-line"></i> Wood Block
+                        <i aria-hidden="true" class="ri-shapes-line"></i> Wood Block
                     </button>
                     <button class="sound-btn" data-sound="drum">
-                        <i class="ri-disc-line"></i> Drum
+                        <i aria-hidden="true" class="ri-disc-line"></i> Drum
                     </button>
                 </div>
 
@@ -383,37 +389,37 @@
 
                 <div class="info-grid">
                     <div class="info-card">
-                        <h4><i class="ri-snail-line"></i> Largo (40-60 BPM)</h4>
+                        <h4><i aria-hidden="true" class="ri-snail-line"></i> Largo (40-60 BPM)</h4>
                         <p>Very slow and broad. Creates a sense of grandeur, solemnity, or deep emotion. Often used for funeral marches, solemn processionals, or deeply expressive passages.</p>
                         <p class="noise-specs"><strong>Character:</strong> Stately, solemn, expansive<br><strong>Examples:</strong> Handel's "Largo", slow movements of Baroque concertos</p>
                     </div>
 
                     <div class="info-card">
-                        <h4><i class="ri-walk-line"></i> Adagio (66-76 BPM)</h4>
+                        <h4><i aria-hidden="true" class="ri-walk-line"></i> Adagio (66-76 BPM)</h4>
                         <p>Slow and expressive. Allows time for emotional depth and ornamentation. Common in slow movements of classical symphonies and concertos.</p>
                         <p class="noise-specs"><strong>Character:</strong> Leisurely, expressive, gentle<br><strong>Examples:</strong> Beethoven's "Moonlight Sonata" first movement</p>
                     </div>
 
                     <div class="info-card">
-                        <h4><i class="ri-run-line"></i> Andante (76-108 BPM)</h4>
+                        <h4><i aria-hidden="true" class="ri-run-line"></i> Andante (76-108 BPM)</h4>
                         <p>At a walking pace. The word comes from Italian "andare" (to walk). Creates a natural, unhurried flow suitable for melodic passages.</p>
                         <p class="noise-specs"><strong>Character:</strong> Walking pace, flowing, natural<br><strong>Examples:</strong> Mozart's "Andante" movements</p>
                     </div>
 
                     <div class="info-card">
-                        <h4><i class="ri-speed-line"></i> Moderato (108-120 BPM)</h4>
+                        <h4><i aria-hidden="true" class="ri-speed-line"></i> Moderato (108-120 BPM)</h4>
                         <p>Moderate speed. The middle ground between slow and fast, suitable for many types of musical expression.</p>
                         <p class="noise-specs"><strong>Character:</strong> Balanced, versatile, steady<br><strong>Examples:</strong> Many pop songs, marches</p>
                     </div>
 
                     <div class="info-card">
-                        <h4><i class="ri-flashlight-line"></i> Allegro (120-168 BPM)</h4>
+                        <h4><i aria-hidden="true" class="ri-flashlight-line"></i> Allegro (120-168 BPM)</h4>
                         <p>Fast, lively, and bright. The most common tempo for energetic movements. Conveys joy, excitement, or urgency.</p>
                         <p class="noise-specs"><strong>Character:</strong> Lively, bright, joyful<br><strong>Examples:</strong> Vivaldi's "Four Seasons" fast movements</p>
                     </div>
 
                     <div class="info-card">
-                        <h4><i class="ri-fire-line"></i> Presto (168-200 BPM)</h4>
+                        <h4><i aria-hidden="true" class="ri-fire-line"></i> Presto (168-200 BPM)</h4>
                         <p>Very fast. Demands technical virtuosity from performers. Creates excitement, intensity, or dramatic effect.</p>
                         <p class="noise-specs"><strong>Character:</strong> Extremely fast, virtuosic, exciting<br><strong>Examples:</strong> Rimsky-Korsakov's "Flight of the Bumblebee"</p>
                     </div>
@@ -590,7 +596,7 @@
 
                 <div class="info-card algorithm-card" style="margin-top: 1rem;">
                     <h4>The 3:2 Polyrhythm</h4>
-                    <p>To practice 3:2, play three evenly-spaced notes against two evenly-spaced notes. A helpful phrase is "Not Dif-fi-cult" where "Not" and "cult" align with the 2-beat, and "Not", "fi", and "cult" align with the 3-beat.</p>
+                    <p>To practice 3:2, play three evenly-spaced notes against two evenly-spaced notes. A helpful phrase is "Not Dif-fi-cult" where "Not" and "fi" align with the 2-beat, and "Not", "Dif", and "cult" align with the 3-beat.</p>
                     <div class="math-block small">
                         <code>2-beat: X . . X . .<br>3-beat: X . X . X .</code>
                     </div>
@@ -608,19 +614,19 @@
                 <h3>The Golden Rules of Metronome Practice</h3>
                 <div class="info-grid">
                     <div class="info-card">
-                        <h4><i class="ri-number-1"></i> Start Slower Than You Think</h4>
+                        <h4><i aria-hidden="true" class="ri-number-1"></i> Start Slower Than You Think</h4>
                         <p>Begin at a tempo where you can play perfectly and comfortably - even if that means 50 BPM. Your focus is to build muscle memory correctly, not to impress yourself with speed.</p>
                     </div>
                     <div class="info-card">
-                        <h4><i class="ri-number-2"></i> Increase Gradually</h4>
+                        <h4><i aria-hidden="true" class="ri-number-2"></i> Increase Gradually</h4>
                         <p>Raise the tempo by only 2-5 BPM at a time. Use the Tempo Trainer feature to automate gradual increases. If accuracy drops, go back to the previous tempo.</p>
                     </div>
                     <div class="info-card">
-                        <h4><i class="ri-number-3"></i> Play WITH the Click, Not Against It</h4>
+                        <h4><i aria-hidden="true" class="ri-number-3"></i> Play WITH the Click, Not Against It</h4>
                         <p>Your goal is to make your notes land exactly with the click, so they almost disappear into each other. If you can clearly hear the click separate from your playing, your timing needs work.</p>
                     </div>
                     <div class="info-card">
-                        <h4><i class="ri-number-4"></i> Use Subdivisions</h4>
+                        <h4><i aria-hidden="true" class="ri-number-4"></i> Use Subdivisions</h4>
                         <p>Practice with eighth notes or sixteenth notes to internalize the beat more deeply. Subdivisions help you understand exactly where each note should fall within the beat.</p>
                     </div>
                 </div>
@@ -628,19 +634,19 @@
                 <h3>Advanced Techniques</h3>
 
                 <div class="info-card algorithm-card">
-                    <h4><i class="ri-volume-mute-line"></i> Muted Beats Training</h4>
+                    <h4><i aria-hidden="true" class="ri-volume-mute-line"></i> Muted Beats Training</h4>
                     <p>Enable "Muted Beats" to develop your internal timing. Start with 4 bars of click, 1 bar of silence. As you improve, increase the silent bars. The goal is to stay perfectly in time even when the click disappears.</p>
                     <p class="noise-specs"><strong>Why it works:</strong> Forces you to internalize the pulse rather than relying on the click. Professional musicians use this technique to develop a rock-solid internal clock.</p>
                 </div>
 
                 <div class="info-card algorithm-card">
-                    <h4><i class="ri-speed-up-line"></i> Speed Building with Tempo Trainer</h4>
+                    <h4><i aria-hidden="true" class="ri-speed-up-line"></i> Speed Building with Tempo Trainer</h4>
                     <p>Use the Tempo Trainer for systematic speed development. Set your comfortable tempo as the start, your target tempo as the goal, and a duration of 5-10 minutes. The gradual increase lets your muscles adapt without developing tension.</p>
                     <p class="noise-specs"><strong>Pro tip:</strong> If you hit a "speed wall", go back 10-15 BPM and work on relaxation and efficiency before trying again.</p>
                 </div>
 
                 <div class="info-card algorithm-card">
-                    <h4><i class="ri-focus-2-line"></i> The "3 Perfect Reps" Rule</h4>
+                    <h4><i aria-hidden="true" class="ri-focus-2-line"></i> The "3 Perfect Reps" Rule</h4>
                     <p>At each tempo, play the passage perfectly 3 times in a row before increasing speed. One mistake means you start the count over. This ensures you are actually mastering each tempo level.</p>
                     <p class="noise-specs"><strong>Variation:</strong> For longer pieces, apply this rule to short sections (4-8 bars) rather than the whole piece.</p>
                 </div>
@@ -674,6 +680,11 @@
                         <span class="session-activity"><strong>Cool-down:</strong> Play through something enjoyable at comfortable tempo</span>
                     </div>
                 </div>
+
+                <h3>Tips for Your Instrument</h3>
+                <p>The way you apply these methods changes from one instrument to the next. We put together focused guides for the most common ones: a <a href="/for-guitar">metronome for guitar</a> for cleaning up chord changes and strumming, a <a href="/for-drums">metronome for drums</a> for building rock-solid timekeeping, and a <a href="/for-piano">metronome for piano</a> for coordinating both hands and evening out your scales.</p>
+
+                <p>Timing is only half the picture. Before a session, check your pitch against steady reference tones with <a href="https://tonesynth.com" target="_blank" rel="noopener">ToneSynth</a>, and if you practice in a noisy room, a layer of steady background sound from <a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a> can help you settle in and stay locked to the click.</p>
             </article>
         </section>
 
@@ -684,6 +695,12 @@
                     <p>Your friendly online metronome with professional practice features. Tempo trainer, practice timer, setlist management, and fullscreen mode. Perfect for musicians, students, and drummers.</p>
                 </div>
                 <div class="footer-links">
+                    <h4>Use Cases</h4>
+                    <a href="/for-guitar">Metronome for guitar</a>
+                    <a href="/for-drums">Metronome for drums</a>
+                    <a href="/for-piano">Metronome for piano</a>
+                </div>
+                <div class="footer-links">
                     <h4>Learn More</h4>
                     <a href="/science">Neuroscience of Rhythm</a>
                     <a href="/applications">Practical Applications</a>
@@ -691,13 +708,13 @@
                     <a href="/faq">FAQ</a>
                 </div>
                 <div class="footer-related">
-                    <h4>Related Tools</h4>
-                    <a href="https://sirengenerator.com" target="_blank">Siren Generator</a>
-                    <a href="https://focushum.com" target="_blank">Noise Generator</a>
-                    <a href="https://tonesynth.com" target="_blank">Tone Generator</a>
-                    <a href="https://binauralhq.com" target="_blank">Binaural Beats</a>
-                    <a href="https://omtones.com" target="_blank">Drone Generator</a>
-                    <a href="https://testtones.com" target="_blank">Frequency Generator</a>
+                    <h4>Audio Tools Network</h4>
+                    <a href="https://sirengenerator.com" target="_blank" rel="noopener">Siren Generator</a>
+                    <a href="https://tonesynth.com" target="_blank" rel="noopener">ToneSynth</a>
+                    <a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a>
+                    <a href="https://binauralhq.com" target="_blank" rel="noopener">BinauralHQ</a>
+                    <a href="https://omtones.com" target="_blank" rel="noopener">OmTones</a>
+                    <a href="https://testtones.com" target="_blank" rel="noopener">TestTones</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -721,10 +738,10 @@
             <div class="fullscreen-status" id="fullscreenStatus">Ready</div>
             <div class="fullscreen-controls">
                 <button class="fullscreen-play-btn" id="fullscreenPlay">
-                    <i class="ri-play-fill"></i> Start
+                    <i aria-hidden="true" class="ri-play-fill"></i> Start
                 </button>
                 <button class="fullscreen-exit-btn" id="fullscreenExit">
-                    <i class="ri-fullscreen-exit-line"></i> Exit
+                    <i aria-hidden="true" class="ri-fullscreen-exit-line"></i> Exit
                 </button>
             </div>
             <div class="fullscreen-hint">Press <kbd>Space</kbd> to play/stop, <kbd>Esc</kbd> to exit</div>

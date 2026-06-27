@@ -25,6 +25,26 @@ def traditions():
 def faq():
     return render_template('faq.html', active_page='faq')
 
+@app.route('/for-guitar')
+def for_guitar():
+    return render_template('for-guitar.html', active_page='for-guitar')
+
+@app.route('/for-drums')
+def for_drums():
+    return render_template('for-drums.html', active_page='for-drums')
+
+@app.route('/for-piano')
+def for_piano():
+    return render_template('for-piano.html', active_page='for-piano')
+
+@app.route('/for-singing')
+def for_singing():
+    return render_template('for-singing.html', active_page='for-singing')
+
+@app.route('/for-bass')
+def for_bass():
+    return render_template('for-bass.html', active_page='for-bass')
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
@@ -69,6 +89,36 @@ def sitemap():
     </url>
     <url>
         <loc>https://metronomely.com/faq</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://metronomely.com/for-guitar</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://metronomely.com/for-drums</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://metronomely.com/for-piano</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://metronomely.com/for-singing</loc>
+        <lastmod>{today}</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://metronomely.com/for-bass</loc>
         <lastmod>{today}</lastmod>
         <priority>0.9</priority>
         <changefreq>monthly</changefreq>
