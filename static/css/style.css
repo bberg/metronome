@@ -923,6 +923,21 @@ body {
     color: var(--primary);
 }
 
+.footer-legal-links {
+    margin-bottom: 0.5rem;
+    font-size: 0.8125rem;
+}
+
+.footer-legal-links a {
+    color: #64748b;
+    text-decoration: none;
+}
+
+.footer-legal-links a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
 /* Recommended Gear - Affiliate Links */
 .recommended-gear {
     background: var(--surface-raised);

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}About Metronomely - The Story Behind Our Online Metronome | Metronomely{% endblock %}
+
+{% block description %}Why we built Metronomely: a precise, no-fuss online metronome for musicians who want tighter timing without downloads, sign-ups, or clutter.{% endblock %}
+
+{% block meta_extra %}
+<meta property="og:title" content="About Metronomely">
+<meta property="og:description" content="The story behind Metronomely - a precise, free online metronome built for everyday practice.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://metronomely.com/about">
+{% endblock %}
+
+{% block tagline %}Why we built a metronome we actually wanted to practice with{% endblock %}
+
+{% block content %}
+<div class="faq-container">
+    <div class="faq-hero">
+        <h1>About Metronomely</h1>
+        <p>A precise online metronome for musicians who care about timing - and would rather practice than fiddle with settings.</p>
+    </div>
+
+    <section class="content-section">
+        <p>Metronomely started from a small frustration shared by a lot of players: most online metronomes either drift, bury the controls you actually use, or wrap a simple click in a wall of pop-ups. We wanted the opposite - a metronome that starts on the first beat, holds a rock-steady pulse, and gets out of the way so you can focus on your instrument.</p>
+
+        <p>Under the hood, Metronomely is built on the Web Audio API, which schedules each click with sample-accurate timing rather than relying on a loose browser timer. That difference matters when you are locking sixteenth notes against the click or running a long practice session - the pulse stays even from the first bar to the last. Everything runs locally in your browser. There is nothing to install, no account to create, and the audio is generated on your own device, so you can open a tab and be counting in within a couple of seconds.</p>
+
+        <p>We built it for working musicians and students alike: the guitarist cleaning up chord changes, the drummer hunting for the pocket, the pianist evening out both hands, the singer holding tempo through a phrase. The tools reflect that. A tap-tempo button finds the BPM of any song, time signatures and subdivisions shape the feel, accents mark the downbeat, and a tempo trainer nudges your speed up gradually so technique grows without tension. A practice timer, muted-beat training, and a savable setlist round out a session you can actually structure around.</p>
+
+        <p>What makes Metronomely good is restraint. We resisted turning it into a sprawling app. The features that earn their place are the ones musicians reach for every day, presented cleanly enough to use on a phone propped on a music stand. It is free, and we intend to keep it that way - supported by unobtrusive ads and the occasional affiliate link rather than a paywall or a sign-up gate.</p>
+
+        <p>Metronomely is part of the <strong>Audio Tools Network</strong>, a small family of free, browser-based audio tools. If you are tuning before you practice, our sibling site <a href="https://tonesynth.com" target="_blank" rel="noopener">ToneSynth</a> gives you clean reference tones, and if you practice in a noisy room, <a href="https://focushum.com" target="_blank" rel="noopener">Focus Hum</a> offers steady background sound to help you settle in. Same philosophy across all of them: do one thing well, keep it free, and respect your time.</p>
+
+        <p>Have a feature request or found a bug? We would genuinely like to hear it - reach us any time on the <a href="/contact">contact page</a>.</p>
+    </section>
+</div>
+{% endblock %}
