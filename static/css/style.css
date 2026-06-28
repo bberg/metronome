@@ -2737,3 +2737,312 @@ body {
 .network-card i{color:var(--primary);font-size:1.4rem;}
 .nt-name{font-weight:700;color:var(--text);}
 .nt-blurb{font-size:.8125rem;color:var(--text-secondary);}
+
+
+/* === DESIGN SYSTEM V2 === */
+/* ============================================================
+   Audio Tools Network — Design System v2 — METRONOMELY
+   Brand: instrument-grade graphite stage + one hot crimson
+   "live signal". Space Grotesk display + tabular BPM numerals,
+   Inter for UI body. Amber (#FF7A45) as the accent flare.
+   Strategy: (1) palette via token overrides = distinct identity;
+   (2) shared ELEVATION layer = world-class bar.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---- Metronomely palette: crimson live signal on graphite ---- */
+:root {
+  --primary: #E11D2A;
+  --primary-dark: #B3121E;
+  --primary-light: #ffd0d0;
+  --accent: #FF7A45;
+  --bg: #0B0C0E;
+  --surface: #16181C;
+  --surface-raised: #1E2127;
+  --text: #F4F5F7;
+  --text-secondary: #AEB2BC;
+  --text-muted: #71757F;
+  --border: #25282F;
+  --border-focus: #3A3E47;
+  --grad: linear-gradient(135deg, #E11D2A 0%, #FF3B4E 45%, #FF7A45 100%);
+  --glow: 0 0 0 1px rgba(225,29,42,.16), 0 18px 50px -12px rgba(225,29,42,.42);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
+  --shadow-md: 0 6px 16px -6px rgba(0,0,0,.6), 0 2px 6px -2px rgba(0,0,0,.5);
+  --shadow-lg: 0 26px 64px -20px rgba(0,0,0,.88), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background:
+    radial-gradient(1100px 640px at 16% -10%, rgba(225,29,42,.20), transparent 58%),
+    radial-gradient(900px 560px at 90% 4%, rgba(255,122,69,.13), transparent 55%),
+    radial-gradient(820px 620px at 50% 122%, rgba(225,29,42,.10), transparent 60%),
+    var(--bg) !important;
+  background-attachment: fixed;
+}
+
+/* ---- Container: glassy hairline stage with crimson lift ---- */
+.container {
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 22px;
+  box-shadow: var(--shadow-lg), var(--glow);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0) 240px),
+    var(--surface);
+}
+
+/* ---- Hero: display wordmark with gradient clip ---- */
+.page-header { padding: 3.5rem 3rem 2.25rem; }
+.header-content h1,
+.header-content .site-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(2.6rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tagline {
+  font-size: 1.075rem;
+  color: var(--text-secondary);
+  max-width: 56ch; margin: 0.85rem auto 0; line-height: 1.55;
+}
+.hero-cta-line kbd {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-focus);
+  box-shadow: 0 1px 0 rgba(255,255,255,.05) inset, 0 1px 2px rgba(0,0,0,.4);
+}
+.page-header::after { height: 3px; background: var(--grad); opacity: .95; }
+
+/* ---- Badges: refined glass pills ---- */
+.header-badge {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 2rem; backdrop-filter: blur(6px);
+  transition: transform .2s ease, border-color .2s ease;
+}
+.header-badge:hover { transform: translateY(-1px); border-color: rgba(225,29,42,.5); }
+.header-badge i { color: var(--accent); }
+
+/* ---- Nav: animated active underline ---- */
+.nav-link { transition: color .2s ease, background .2s ease; position: relative; }
+.nav-link::after {
+  content: ''; position: absolute; left: 1.25rem; right: 1.25rem; bottom: 0;
+  height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left;
+  transition: transform .22s ease;
+}
+.nav-link:hover { color: var(--text); background: rgba(225,29,42,.07); }
+.nav-link:hover::after { transform: scaleX(1); }
+.nav-link.active { color: var(--text); }
+.nav-link.active::after { transform: scaleX(1); }
+
+/* ============================================================
+   METRONOME STAGE — site-specific instrument treatment
+   ============================================================ */
+
+/* ---- Giant BPM readout: tabular Space Grotesk, jitter-free ---- */
+.bpm-display {
+  background:
+    radial-gradient(420px 200px at 50% 0%, rgba(225,29,42,.10), transparent 70%),
+    var(--surface-raised);
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04), var(--shadow-md);
+}
+.bpm-input {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.03em;
+  /* hotter gradient than the wordmark for AA-large legibility */
+  background: linear-gradient(135deg, #FF3B4E 0%, #FF5A4A 55%, #FF9A5E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 0 38px rgba(225,29,42,.35);
+}
+.bpm-input:focus { -webkit-text-fill-color: var(--text); color: var(--text); }
+.bpm-label, .fullscreen-bpm-label {
+  font-weight: 600; letter-spacing: 0.14em; color: var(--text-muted);
+}
+.fullscreen-bpm {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- BPM nudge buttons ---- */
+.bpm-adjust-btn {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: transform .15s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+.bpm-adjust-btn:hover {
+  background: var(--grad);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 22px -8px rgba(225,29,42,.6);
+}
+
+/* ---- Tempo slider: crimson signal track ---- */
+.bpm-slider { accent-color: var(--primary); }
+.bpm-slider::-webkit-slider-thumb {
+  background: var(--grad);
+  box-shadow: 0 2px 10px rgba(225,29,42,.55), inset 0 1px 0 rgba(255,255,255,.4);
+}
+.bpm-slider::-webkit-slider-thumb:hover { background: var(--grad); transform: scale(1.12); }
+.bpm-slider::-moz-range-thumb { background: var(--primary); }
+input[type="range"] { accent-color: var(--primary); }
+
+/* ---- Beat ring dots: crimson pulse, amber accent flare ---- */
+.beat-indicator, .fullscreen-beats {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 16px;
+}
+.beat-dot, .fullscreen-beat-dot {
+  background: var(--surface-raised);
+  border: 2px solid var(--border-focus);
+  transition: transform .1s ease, box-shadow .1s ease, background .1s ease, border-color .1s ease;
+}
+.beat-dot.accent { border-color: rgba(255,122,69,.7); }
+.beat-dot.active, .fullscreen-beat-dot.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 22px rgba(225,29,42,.7), 0 0 4px rgba(225,29,42,.9);
+  transform: scale(1.15);
+}
+/* downbeat = brightest crimson + amber halo */
+.beat-dot.accent.active, .fullscreen-beat-dot.accent.active {
+  background: var(--primary);
+  border-color: var(--accent);
+  box-shadow: 0 0 34px rgba(225,29,42,.85), 0 0 12px rgba(255,122,69,.7);
+  transform: scale(1.28);
+}
+
+/* ---- Status badge: live crimson signal ---- */
+.status-badge { border-radius: 8px; }
+.status-badge.playing {
+  background: rgba(225,29,42,.12);
+  border-color: rgba(225,29,42,.55);
+  color: var(--primary-light);
+}
+.status-badge.playing .status-icon { color: var(--primary); }
+
+/* ---- Primary START action: gradient pill with glow + lift ---- */
+.primary-btn, .fullscreen-play-btn {
+  background: var(--grad) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 12px 32px -8px rgba(225,29,42,.6), inset 0 1px 0 rgba(255,255,255,.3) !important;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease !important;
+}
+.primary-btn:hover, .fullscreen-play-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 18px 44px -8px rgba(225,29,42,.78), inset 0 1px 0 rgba(255,255,255,.4) !important;
+  filter: saturate(1.06) !important;
+}
+/* STOP state: muted graphite so the live crimson reads as "go" */
+.primary-btn.playing {
+  background: linear-gradient(135deg, #2A2D34, #1A1C21) !important;
+  color: var(--text) !important;
+  box-shadow: 0 0 0 1px rgba(225,29,42,.5) inset, 0 10px 28px -10px rgba(0,0,0,.7) !important;
+  animation: none !important;
+}
+.primary-btn.playing:hover {
+  background: linear-gradient(135deg, #34373F, #202329) !important;
+}
+
+/* ---- Tap Tempo / secondary as a precise machined pad ---- */
+.secondary-btn {
+  border-radius: 999px;
+  border: 1px solid var(--border-focus);
+  transition: transform .18s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.secondary-btn:hover {
+  border-color: rgba(225,29,42,.6);
+  color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -14px rgba(225,29,42,.6);
+}
+.secondary-btn:active {
+  transform: scale(.97);
+  background: var(--grad);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ---- Presets / toggles / subdivisions ---- */
+.preset-group h3 { color: var(--accent); }
+.preset-btn, .subdivision-btn, .sound-btn, .accent-toggle {
+  border-radius: 10px !important;
+  transition: transform .18s ease, border-color .2s ease, color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.preset-btn:hover, .subdivision-btn:hover, .sound-btn:hover {
+  border-color: rgba(225,29,42,.6);
+  color: var(--primary-light);
+  transform: translateY(-2px);
+}
+.preset-btn.active, .subdivision-btn.active, .sound-btn.active {
+  background: var(--grad);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 22px -10px rgba(225,29,42,.7);
+}
+
+/* ---- Tempo trainer: glanceable signal progress ---- */
+.trainer-progress { background: var(--border); border-radius: 999px; }
+.trainer-progress-fill {
+  background: var(--grad);
+  box-shadow: 0 0 14px rgba(225,29,42,.5);
+}
+.trainer-current, .timer-display-large {
+  color: var(--primary-light);
+}
+.timer-display-large {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Setlist / share / cards: tighten to the system ---- */
+input, select, textarea { border-radius: 12px !important; }
+.setlist-item, .info-card, .stats-card, .practice-tool-card, .cross-link-card,
+.network-card, .benefit-card, .application-card, .tradition-card {
+  border-radius: 16px !important;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.setlist-item:hover, .info-card:hover, .practice-tool-card:hover, .cross-link-card:hover,
+.network-card:hover, .benefit-card:hover, .application-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(225,29,42,.4);
+  box-shadow: 0 16px 36px -16px rgba(225,29,42,.5);
+}
+.share-btn {
+  border-radius: 999px !important;
+  transition: transform .18s ease, border-color .2s ease, color .2s ease;
+}
+.share-btn:hover { transform: translateY(-2px); border-color: rgba(225,29,42,.6); color: var(--primary-light); }
+.setlist-add { border-radius: 999px !important; }
+
+/* ---- Section accents ---- */
+.section-title, h2 { letter-spacing: -0.02em; }
+.cta-button {
+  background: var(--grad) !important;
+  border: none !important; color: #fff !important; font-weight: 700 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 12px 32px -10px rgba(225,29,42,.6) !important;
+  transition: transform .18s ease, box-shadow .18s ease !important;
+}
+.cta-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 18px 44px -10px rgba(225,29,42,.78) !important;
+}
+a { color: var(--primary-light); }
+.nav-link, .footer-links a, .footer-legal-links a { color: var(--text-secondary); }
+::selection { background: rgba(225,29,42,.4); color: #fff; }
